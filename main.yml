@@ -1,12 +1,12 @@
 - name: Hello World Sample
-  hosts: node1
+  hosts: loadbalancer
   tasks:
     - name: Hello Message
       debug:
-        msg: "Hello World!"
+        msg: "Hello World! LB"
 - name: Hello World Sample
-  hosts: node2,node3
+  hosts: web
   tasks:
     - name: Hello Message
       debug:
-        msg: "Hello World!"
+        msg: "Hello World! web"
