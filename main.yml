@@ -4,13 +4,13 @@
     - name: Hello Message
       debug:
         msg: "Hello World! LB"
-- name: Hello World Sample
+- name: WEB Tasks
   hosts: web
   become: yes
   become_method: sudo
   become_user: root
   tasks:
-    - name: Hello Message
+    - name: Install HTTPD
       yum:
         name: httpd
         state: present
