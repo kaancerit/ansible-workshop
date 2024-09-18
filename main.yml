@@ -1,14 +1,12 @@
 - name: Hello World Sample
-  hosts: all
+  hosts: loadbalancer
   tasks:
     - name: Hello Message
       debug:
         msg: "Hello World! LB"
-  when: inventory_hostname in groups["loadbalancer"]
 - name: Hello World Sample
   hosts: web
   tasks:
     - name: Hello Message
       debug:
         msg: "Hello World! web"
-  when: inventory_hostname in groups["web"]
