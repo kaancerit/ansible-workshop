@@ -1,11 +1,11 @@
-- name: Hello World Sample
+- name: Loadbalancer Play
   hosts: loadbalancer
   tasks:
-    - name: Hello Message
+    - name: LB
       debug:
-        msg: "Hello World! LB"
-- name: WEB Tasks
-  hosts: web
+        msg: "There is no LB"
+- name: WEB Tasks on node2
+  hosts: node2
   become: yes
   become_method: sudo
   become_user: root
@@ -14,7 +14,31 @@
       yum:
         name: httpd
         state: present
+    - copy:
+        dest: "/var/www/html/index.html"
+        content: |
+          A
     - name: Enable service httpd, and not touch the state
       service:
         name: httpd
         enabled: yes
+        state: started
+- name: WEB Tasks on node3
+  hosts: node3
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Install HTTPD
+      yum:
+        name: httpd
+        state: present
+    - copy:
+        dest: "/var/www/html/index.html"
+        content: |
+          B
+    - name: Enable service httpd, and not touch the state
+      service:
+        name: httpd
+        enabled: yes
+        state: started      
