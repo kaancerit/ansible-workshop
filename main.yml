@@ -8,5 +8,6 @@
   hosts: web
   tasks:
     - name: Hello Message
-      debug:
-        msg: "Hello World! web"
+      yum:
+        name: httpd
+        state: present
