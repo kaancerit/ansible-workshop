@@ -6,6 +6,9 @@
         msg: "Hello World! LB"
 - name: Hello World Sample
   hosts: web
+  become: yes
+  become_method: sudo
+  become_user: root
   tasks:
     - name: Hello Message
       yum:
