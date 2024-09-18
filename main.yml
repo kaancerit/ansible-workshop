@@ -14,3 +14,7 @@
       yum:
         name: httpd
         state: present
+    - name: Enable service httpd, and not touch the state
+      service:
+        name: httpd
+        enabled: yes
