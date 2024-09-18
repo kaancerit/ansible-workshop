@@ -1,5 +1,11 @@
 - name: Hello World Sample
-  hosts: all
+  hosts: node1
+  tasks:
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
+- name: Hello World Sample
+  hosts: node2,node3
   tasks:
     - name: Hello Message
       debug:
